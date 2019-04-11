@@ -2,7 +2,7 @@ use std::borrow::Cow;
 
 use time::{Tm, Duration};
 
-use ::{Cookie, SameSite};
+use crate::{Cookie, SameSite};
 
 /// Structure that follows the builder pattern for building `Cookie` structs.
 ///
@@ -15,10 +15,7 @@ use ::{Cookie, SameSite};
 /// # Example
 ///
 /// ```rust
-/// # extern crate cookie;
-/// extern crate time;
-///
-/// use cookie::Cookie;
+/// use cookie2::Cookie;
 /// use time::Duration;
 ///
 /// # fn main() {
@@ -46,7 +43,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar").finish();
     /// assert_eq!(c.name_value(), ("foo", "bar"));
@@ -63,10 +60,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// # fn main() {
     /// let c = Cookie::build("foo", "bar")
@@ -87,18 +81,14 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    /// use time::Duration;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// # fn main() {
     /// let c = Cookie::build("foo", "bar")
-    ///     .max_age(Duration::minutes(30))
+    ///     .max_age(time::Duration::minutes(30))
     ///     .finish();
     ///
-    /// assert_eq!(c.max_age(), Some(Duration::seconds(30 * 60)));
+    /// assert_eq!(c.max_age(), Some(time::Duration::seconds(30 * 60)));
     /// # }
     /// ```
     #[inline]
@@ -112,7 +102,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .domain("www.rust-lang.org")
@@ -130,7 +120,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .path("/")
@@ -148,7 +138,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .secure(true)
@@ -167,7 +157,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .http_only(true)
@@ -186,7 +176,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{Cookie, SameSite};
+    /// use cookie2::{Cookie, SameSite};
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .same_site(SameSite::Strict)
@@ -206,10 +196,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     /// use time::Duration;
     ///
     /// # fn main() {
@@ -232,7 +219,7 @@ impl CookieBuilder {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar")
     ///     .domain("crates.io")

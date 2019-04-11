@@ -31,7 +31,7 @@ impl SameSite {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::SameSite;
+    /// use cookie2::SameSite;
     ///
     /// let strict = SameSite::Strict;
     /// assert!(strict.is_strict());
@@ -51,7 +51,7 @@ impl SameSite {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::SameSite;
+    /// use cookie2::SameSite;
     ///
     /// let lax = SameSite::Lax;
     /// assert!(lax.is_lax());
@@ -71,7 +71,7 @@ impl SameSite {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::SameSite;
+    /// use cookie2::SameSite;
     ///
     /// let none = SameSite::None;
     /// assert!(none.is_none());

@@ -1,9 +1,9 @@
-use secure::ring::aead::{seal_in_place, open_in_place, Aad, Algorithm, Nonce, AES_256_GCM};
-use secure::ring::aead::{OpeningKey, SealingKey};
-use secure::ring::rand::{SecureRandom, SystemRandom};
-use secure::{base64, Key};
+use ring::aead::{seal_in_place, open_in_place, Aad, Algorithm, Nonce, AES_256_GCM};
+use ring::aead::{OpeningKey, SealingKey};
+use ring::rand::{SecureRandom, SystemRandom};
+use super::{Key};
 
-use {Cookie, CookieJar};
+use crate::{Cookie, CookieJar};
 
 // Keep these in sync, and keep the key len synced with the `private` docs as
 // well as the `KEYS_INFO` const in secure::Key.
@@ -67,7 +67,7 @@ impl<'a> PrivateJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -96,7 +96,7 @@ impl<'a> PrivateJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -125,7 +125,7 @@ impl<'a> PrivateJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -184,7 +184,7 @@ impl<'a> PrivateJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -203,7 +203,7 @@ impl<'a> PrivateJar<'a> {
 
 #[cfg(test)]
 mod test {
-    use {CookieJar, Cookie, Key};
+    use crate::{CookieJar, Cookie, Key};
 
     #[test]
     fn simple() {

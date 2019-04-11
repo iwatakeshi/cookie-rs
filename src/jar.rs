@@ -4,9 +4,9 @@ use std::mem::replace;
 use time::{self, Duration};
 
 #[cfg(feature = "secure")]
-use secure::{PrivateJar, SignedJar, Key};
-use delta::DeltaCookie;
-use Cookie;
+use crate::secure::{PrivateJar, SignedJar, Key};
+use crate::delta::DeltaCookie;
+use crate::Cookie;
 
 /// A collection of cookies that tracks its modifications.
 ///
@@ -20,7 +20,7 @@ use Cookie;
 /// [`add_original`](#method.add_original):
 ///
 /// ```rust
-/// use cookie::{Cookie, CookieJar};
+/// use cookie2::{Cookie, CookieJar};
 ///
 /// let mut jar = CookieJar::new();
 /// jar.add_original(Cookie::new("name", "value"));
@@ -32,7 +32,7 @@ use Cookie;
 /// [get](#method.get):
 ///
 /// ```rust
-/// # use cookie::{Cookie, CookieJar};
+/// # use cookie2::{Cookie, CookieJar};
 /// let mut jar = CookieJar::new();
 /// jar.add(Cookie::new("a", "one"));
 /// jar.add(Cookie::new("b", "two"));
@@ -59,7 +59,7 @@ use Cookie;
 /// the changes made to a cookie jar over a period of time.
 ///
 /// ```rust
-/// # use cookie::{Cookie, CookieJar};
+/// # use cookie2::{Cookie, CookieJar};
 /// let mut jar = CookieJar::new();
 ///
 /// // original cookies don't affect the delta
@@ -91,7 +91,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::CookieJar;
+    /// use cookie2::CookieJar;
     ///
     /// let jar = CookieJar::new();
     /// assert_eq!(jar.iter().count(), 0);
@@ -106,7 +106,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     /// assert!(jar.get("name").is_none());
@@ -135,7 +135,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     /// jar.add_original(Cookie::new("name", "value"));
@@ -156,7 +156,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     /// jar.add(Cookie::new("name", "value"));
@@ -186,10 +186,7 @@ impl CookieJar {
     /// Removing an _original_ cookie results in a _removal_ cookie:
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     /// use time::Duration;
     ///
     /// # fn main() {
@@ -212,7 +209,7 @@ impl CookieJar {
     /// Removing a new cookie does not result in a _removal_ cookie:
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     /// jar.add(Cookie::new("name", "value"));
@@ -242,10 +239,7 @@ impl CookieJar {
     /// Removing an _original_ cookie; no _removal_ cookie is generated:
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     /// use time::Duration;
     ///
     /// # fn main() {
@@ -291,7 +285,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     /// jar.add_original(Cookie::new("name", "value"));
@@ -318,7 +312,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie};
+    /// use cookie2::{CookieJar, Cookie};
     ///
     /// let mut jar = CookieJar::new();
     ///
@@ -362,7 +356,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{Cookie, CookieJar, Key};
+    /// use cookie2::{Cookie, CookieJar, Key};
     ///
     /// // Generate a secure key.
     /// let key = Key::generate();
@@ -399,7 +393,7 @@ impl CookieJar {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{Cookie, CookieJar, Key};
+    /// use cookie2::{Cookie, CookieJar, Key};
     ///
     /// // Generate a secure key.
     /// let key = Key::generate();
@@ -468,7 +462,7 @@ impl<'a> Iterator for Iter<'a> {
 #[cfg(test)]
 mod test {
     use super::CookieJar;
-    use Cookie;
+    use crate::{Key, Cookie};
 
     #[test]
     #[allow(deprecated)]
@@ -502,7 +496,7 @@ mod test {
     #[test]
     #[cfg(feature = "secure")]
     fn iter() {
-        let key = ::Key::generate();
+        let key = Key::generate();
         let mut c = CookieJar::new();
 
         c.add_original(Cookie::new("original", "original"));

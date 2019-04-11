@@ -1,14 +1,15 @@
 [package]
-name = "cookie"
-authors = ["Alex Crichton <alex@alexcrichton.com>", "Sergio Benitez <sb@sergio.bz>"]
-version = "0.11.0"
+name = "cookie2"
+authors = ["Alex Crichton <alex@alexcrichton.com>", "Sergio Benitez <sb@sergio.bz>", "Douman <douman@gmx.se>"]
+version = "0.12.0"
 license = "MIT/Apache-2.0"
-repository = "https://github.com/alexcrichton/cookie-rs"
-documentation = "https://docs.rs/cookie"
+repository = "https://github.com/DoumanAsh/cookie-rs"
+documentation = "https://docs.rs/cookie2"
 description = """
 Crate for parsing HTTP cookie headers and managing a cookie jar. Supports signed
 and private (encrypted + signed) jars.
 """
+edition = "2018"
 
 [features]
 secure = ["ring", "base64"]

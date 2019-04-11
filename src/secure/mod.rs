@@ -1,6 +1,3 @@
-extern crate ring;
-extern crate base64;
-
 #[macro_use]
 mod macros;
 mod private;

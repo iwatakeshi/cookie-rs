@@ -1,10 +1,10 @@
-use secure::ring::hkdf::expand;
-use secure::ring::digest::{SHA256, Algorithm};
-use secure::ring::hmac::SigningKey;
-use secure::ring::rand::{SecureRandom, SystemRandom};
+use ring::hkdf::expand;
+use ring::digest::{SHA256, Algorithm};
+use ring::hmac::SigningKey;
+use ring::rand::{SecureRandom, SystemRandom};
 
-use secure::private::KEY_LEN as PRIVATE_KEY_LEN;
-use secure::signed::KEY_LEN as SIGNED_KEY_LEN;
+use super::private::KEY_LEN as PRIVATE_KEY_LEN;
+use super::signed::KEY_LEN as SIGNED_KEY_LEN;
 
 static HKDF_DIGEST: &'static Algorithm = &SHA256;
 const KEYS_INFO: &'static str = "COOKIE;SIGNED:HMAC-SHA256;PRIVATE:AEAD-AES-256-GCM";
@@ -39,7 +39,7 @@ impl Key {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Key;
+    /// use cookie2::Key;
     ///
     /// # /*
     /// let master_key = { /* a cryptographically random key >= 32 bytes */ };
@@ -81,7 +81,7 @@ impl Key {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Key;
+    /// use cookie2::Key;
     ///
     /// let key = Key::generate();
     /// ```
@@ -96,7 +96,7 @@ impl Key {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Key;
+    /// use cookie2::Key;
     ///
     /// let key = Key::try_generate();
     /// ```
@@ -117,7 +117,7 @@ impl Key {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Key;
+    /// use cookie2::Key;
     ///
     /// let key = Key::generate();
     /// let signing_key = key.signing();
@@ -131,7 +131,7 @@ impl Key {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Key;
+    /// use cookie2::Key;
     ///
     /// let key = Key::generate();
     /// let encryption_key = key.encryption();

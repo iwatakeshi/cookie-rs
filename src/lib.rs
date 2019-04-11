@@ -10,13 +10,7 @@
 //! Add the following to the `[dependencies]` section of your `Cargo.toml`:
 //!
 //! ```ignore
-//! cookie = "0.11"
-//! ```
-//!
-//! Then add the following line to your crate root:
-//!
-//! ```ignore
-//! extern crate cookie;
+//! cookie2 = "0.12"
 //! ```
 //!
 //! # Features
@@ -138,7 +132,7 @@ impl CookieStr {
 /// method:
 ///
 /// ```rust
-/// use cookie::Cookie;
+/// use cookie2::Cookie;
 ///
 /// let cookie = Cookie::new("name", "value");
 /// assert_eq!(&cookie.to_string(), "name=value");
@@ -148,7 +142,7 @@ impl CookieStr {
 /// and [`CookieBuilder`](struct.CookieBuilder.html) methods:
 ///
 /// ```rust
-/// use cookie::Cookie;
+/// use cookie2::Cookie;
 ///
 /// let cookie = Cookie::build("name", "value")
 ///     .domain("www.rust-lang.org")
@@ -188,7 +182,7 @@ impl Cookie<'static> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie = Cookie::new("name", "value");
     /// assert_eq!(cookie.name_value(), ("name", "value"));
@@ -216,7 +210,7 @@ impl Cookie<'static> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie = Cookie::named("name");
     /// assert_eq!(cookie.name(), "name");
@@ -234,7 +228,7 @@ impl Cookie<'static> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::build("foo", "bar").finish();
     /// assert_eq!(c.name_value(), ("foo", "bar"));
@@ -254,7 +248,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("foo=bar%20baz; HttpOnly").unwrap();
     /// assert_eq!(c.name_value(), ("foo", "bar%20baz"));
@@ -276,7 +270,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse_encoded("foo=bar%20baz; HttpOnly").unwrap();
     /// assert_eq!(c.name_value(), ("foo", "bar baz"));
@@ -299,7 +293,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("my name", "this; value?");
     /// assert_eq!(&c.encoded().to_string(), "my%20name=this%3B%20value%3F");
@@ -315,7 +309,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::new("a", "b");
     /// let owned_cookie = c.into_owned();
@@ -341,7 +335,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::new("name", "value");
     /// assert_eq!(c.name(), "name");
@@ -356,7 +350,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::new("name", "value");
     /// assert_eq!(c.value(), "value");
@@ -371,7 +365,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::new("name", "value");
     /// assert_eq!(c.name_value(), ("name", "value"));
@@ -389,7 +383,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value; httponly").unwrap();
     /// assert_eq!(c.http_only(), Some(true));
@@ -421,7 +415,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value; Secure").unwrap();
     /// assert_eq!(c.secure(), Some(true));
@@ -450,7 +444,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::{Cookie, SameSite};
+    /// use cookie2::{Cookie, SameSite};
     ///
     /// let c = Cookie::parse("name=value; SameSite=Lax").unwrap();
     /// assert_eq!(c.same_site(), Some(SameSite::Lax));
@@ -465,7 +459,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value").unwrap();
     /// assert_eq!(c.max_age(), None);
@@ -483,7 +477,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value").unwrap();
     /// assert_eq!(c.path(), None);
@@ -507,7 +501,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value").unwrap();
     /// assert_eq!(c.domain(), None);
@@ -528,7 +522,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let c = Cookie::parse("name=value").unwrap();
     /// assert_eq!(c.expires(), None);
@@ -548,7 +542,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.name(), "name");
@@ -565,7 +559,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.value(), "value");
@@ -582,7 +576,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.http_only(), None);
@@ -600,7 +594,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.secure(), None);
@@ -618,7 +612,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::{Cookie, SameSite};
+    /// use cookie2::{Cookie, SameSite};
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert!(c.same_site().is_none());
@@ -636,10 +630,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     /// use time::Duration;
     ///
     /// # fn main() {
@@ -660,7 +651,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.path(), None);
@@ -677,7 +668,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut c = Cookie::new("name", "value");
     /// assert_eq!(c.domain(), None);
@@ -694,10 +685,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// # fn main() {
     /// let mut c = Cookie::new("name", "value");
@@ -721,10 +709,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```rust
-    /// # extern crate cookie;
-    /// extern crate time;
-    ///
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     /// use time::Duration;
     ///
     /// # fn main() {
@@ -789,7 +774,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie_string = format!("{}={}", "foo", "bar");
     ///
@@ -819,7 +804,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie_string = format!("{}={}", "foo", "bar");
     ///
@@ -850,7 +835,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie_string = format!("{}={}; Path=/", "foo", "bar");
     ///
@@ -884,7 +869,7 @@ impl<'c> Cookie<'c> {
     /// # Example
     ///
     /// ```
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let cookie_string = format!("{}={}; Domain=crates.io", "foo", "bar");
     ///
@@ -918,7 +903,7 @@ impl<'c> Cookie<'c> {
 /// # Example
 ///
 /// ```rust
-/// use cookie::Cookie;
+/// use cookie2::Cookie;
 ///
 /// let mut c = Cookie::new("my name", "this; value?");
 /// assert_eq!(&c.encoded().to_string(), "my%20name=this%3B%20value%3F");
@@ -945,7 +930,7 @@ impl<'c> fmt::Display for Cookie<'c> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::Cookie;
+    /// use cookie2::Cookie;
     ///
     /// let mut cookie = Cookie::build("foo", "bar")
     ///     .path("/")
@@ -998,8 +983,8 @@ impl<'a, 'b> PartialEq<Cookie<'b>> for Cookie<'a> {
 
 #[cfg(test)]
 mod tests {
-    use ::{Cookie, SameSite};
-    use ::time::{strptime, Duration};
+    use crate::{Cookie, SameSite};
+    use time::{strptime, Duration};
 
     #[test]
     fn format() {

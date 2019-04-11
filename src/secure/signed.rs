@@ -1,8 +1,8 @@
-use secure::ring::digest::{SHA256, Algorithm};
-use secure::ring::hmac::{SigningKey, sign, verify_with_own_key as verify};
-use secure::{base64, Key};
+use ring::digest::{SHA256, Algorithm};
+use ring::hmac::{SigningKey, sign, verify_with_own_key as verify};
+use super::{Key};
 
-use {Cookie, CookieJar};
+use crate::{Cookie, CookieJar};
 
 // Keep these in sync, and keep the key len synced with the `signed` docs as
 // well as the `KEYS_INFO` const in secure::Key.
@@ -57,7 +57,7 @@ impl<'a> SignedJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -85,7 +85,7 @@ impl<'a> SignedJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -112,7 +112,7 @@ impl<'a> SignedJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -145,7 +145,7 @@ impl<'a> SignedJar<'a> {
     /// # Example
     ///
     /// ```rust
-    /// use cookie::{CookieJar, Cookie, Key};
+    /// use cookie2::{CookieJar, Cookie, Key};
     ///
     /// let key = Key::generate();
     /// let mut jar = CookieJar::new();
@@ -164,7 +164,7 @@ impl<'a> SignedJar<'a> {
 
 #[cfg(test)]
 mod test {
-    use {CookieJar, Cookie, Key};
+    use crate::{CookieJar, Cookie, Key};
 
     #[test]
     fn simple() {
