@@ -462,7 +462,9 @@ impl<'a> Iterator for Iter<'a> {
 #[cfg(test)]
 mod test {
     use super::CookieJar;
-    use crate::{Key, Cookie};
+    #[cfg(feature = "secure")]
+    use crate::Key;
+    use crate::Cookie;
 
     #[test]
     #[allow(deprecated)]
